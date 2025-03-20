@@ -1,0 +1,22 @@
+﻿version: '3.8'
+services:
+  mongo:
+    image: mongo:latest
+    container_name: comment_mongo
+    environment:
+      MONGO_INITDB_DATABASE: comment_db
+    volumes:
+      - ./data-comment:/data/db          # Store MongoDB data in a dedicated folder
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: comment_mongo_express
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
