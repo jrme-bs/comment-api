@@ -25,10 +25,10 @@ public class CommentServiceImpl {
     }
 
     /**
-     * Récupère tous les commentaires approuvés pour une pizza donnée.
+     * Récupère tous les commentaires pour une pizza donnée.
      */
-    public List<CommentDTO> getApprovedCommentsByPizzaId(Integer pizzaId) {
-        return commentRepository.findByPizzaIdAndIsApprovedTrue(pizzaId)
+    public List<CommentDTO> getCommentsByPizzaId(Integer pizzaId) {
+        return commentRepository.findByPizzaId(pizzaId)
                 .stream()
                 .map(commentMapper::toDTO)
                 .collect(Collectors.toList());
@@ -69,18 +69,5 @@ public class CommentServiceImpl {
                     HttpStatus.NOT_FOUND, "Commentaire non trouvé avec l'ID: " + id);
         }
         commentRepository.deleteById(id);
-    }
-
-    /**
-     * Approuve un commentaire.
-     */
-    public CommentDTO approveComment(String id) {
-        Comment comment = commentRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "Commentaire non trouvé avec l'ID: " + id));
-
-        comment.setApproved(true);
-        Comment approved = commentRepository.save(comment);
-        return commentMapper.toDTO(approved);
     }
 }

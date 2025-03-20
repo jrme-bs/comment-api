@@ -20,11 +20,11 @@ public class CommentController {
 
     /**
      * GET /api/comments/pizza/{id}
-     * Récupère tous les commentaires approuvés pour une pizza spécifique.
+     * Récupère tous les commentaires pour une pizza spécifique.
      */
     @GetMapping("/pizza/{id}")
     public List<CommentDTO> getCommentsByPizza(@PathVariable("id") Integer pizzaId) {
-        return commentService.getApprovedCommentsByPizzaId(pizzaId);
+        return commentService.getCommentsByPizzaId(pizzaId);
     }
 
     /**
@@ -52,14 +52,5 @@ public class CommentController {
     @DeleteMapping("/{id}")
     public void deleteComment(@PathVariable("id") String id) {
         commentService.deleteComment(id);
-    }
-
-    /**
-     * PUT /api/comments/{id}/approve
-     * Approuve un commentaire (action réservée aux admins).
-     */
-    @PutMapping("/{id}/approve")
-    public CommentDTO approveComment(@PathVariable("id") String id) {
-        return commentService.approveComment(id);
     }
 }

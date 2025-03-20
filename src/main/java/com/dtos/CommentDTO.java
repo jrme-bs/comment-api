@@ -13,7 +13,5 @@ public class CommentDTO {
     private Integer pizzaId;
     private CommentUser user;
     private String content;
-    private String photoUrl;
-    private boolean isApproved;
     private LocalDateTime createdAt;
 }

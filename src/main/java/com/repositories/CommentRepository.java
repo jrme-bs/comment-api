@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository extends MongoRepository<Comment, String> {
-    // On déclare juste la méthode de recherche sur "pizzaId" et "isApproved = true"
-    List<Comment> findByPizzaIdAndIsApprovedTrue(Integer pizzaId);
+    // Méthode pour trouver tous les commentaires associés à une pizza
+    List<Comment> findByPizzaId(Integer pizzaId);
 }

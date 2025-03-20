@@ -20,8 +20,6 @@ public class CommentMapper {
         dto.setPizzaId(comment.getPizzaId());
         dto.setUser(comment.getUser());
         dto.setContent(comment.getContent());
-        dto.setPhotoUrl(comment.getPhotoUrl());
-        dto.setApproved(comment.isApproved());
         dto.setCreatedAt(comment.getCreatedAt());
         return dto;
     }
@@ -34,7 +32,6 @@ public class CommentMapper {
         Comment comment = new Comment();
         comment.setPizzaId(createDTO.getPizzaId());
         comment.setContent(createDTO.getContent());
-        comment.setPhotoUrl(createDTO.getPhotoUrl());
         // Crée et affecte un CommentUser
         comment.setUser(new CommentUser(createDTO.getUserId(), createDTO.getUsername()));
         return comment;
@@ -47,9 +44,6 @@ public class CommentMapper {
         if (comment != null && updateDTO != null) {
             if (updateDTO.getContent() != null) {
                 comment.setContent(updateDTO.getContent());
-            }
-            if (updateDTO.getPhotoUrl() != null) {
-                comment.setPhotoUrl(updateDTO.getPhotoUrl());
             }
         }
     }

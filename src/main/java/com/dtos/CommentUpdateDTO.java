@@ -8,5 +8,4 @@ import lombok.Data;
 @Data
 public class CommentUpdateDTO {
     private String content;
-    private String photoUrl;
 }

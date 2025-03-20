@@ -16,13 +16,10 @@ public class Comment {
     private Integer pizzaId;             // ID de la pizza concernée
     private CommentUser user;            // Informations minimales sur l'utilisateur
     private String content;              // Contenu du commentaire
-    private String photoUrl;             // URL de la photo associée (optionnel)
-    private boolean isApproved;          // Statut d'approbation du commentaire
     private LocalDateTime createdAt;     // Date de création
 
     public Comment() {
         this.createdAt = LocalDateTime.now();
-        this.isApproved = false;
     }
 
     // Getters et Setters ...
@@ -38,12 +35,6 @@ public class Comment {
 
     public String getContent() { return content; }
     public void setContent(String content) { this.content = content; }
-
-    public String getPhotoUrl() { return photoUrl; }
-    public void setPhotoUrl(String photoUrl) { this.photoUrl = photoUrl; }
-
-    public boolean isApproved() { return isApproved; }
-    public void setApproved(boolean approved) { isApproved = approved; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
